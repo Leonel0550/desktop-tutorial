@@ -1,0 +1,733 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    overflow: hidden;
+}
+
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+}
+
+/* Navar de recibo_bodega */
+.nav-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-item {
+    flex: 1;
+}
+
+.nav-link {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    background-color: #575757;
+}
+
+.nav-link.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+/* tabla global*/
+.table {
+    width: 100%;
+    align-items: center;
+}
+
+/* parte donde esta integrado el titulo y el boton de agregar */
+.table_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+    background-color:#2f4f4f;
+}
+
+/*  titulo */
+.table_header h3 {
+    color: #ffffff;
+    flex: 1;
+    text-align: left;
+    margin: 0;
+}
+
+.boton-editar {
+    display: inline-block;
+    color: #ffffff;
+    background-color: #4CAF50;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.boton-editar:hover {
+    background-color: #45a049;
+}
+
+.boton-ver {
+    display: inline-block;
+    color: #ffffff;
+    background-color: #17a2b8;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.boton-ver:hover {
+    background-color: #17a2b8;
+}
+
+
+.boton-detalles {
+    display: inline-block;
+    color: #ffffff;
+    background-color: #0298cf;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.boton-detalles:hover {
+    background-color: #0485b4;
+}
+
+.add_new {
+    padding: 10px 20px;
+    color: #ffffff;
+    background-color: #4CAF50;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 12px;
+    border: none;
+}
+.add_new:hover {
+    background-color: #45a049;
+}
+
+/* Añadir un contenedor centrado */
+.table_container {
+    width: 100%; /* Ajusta el ancho según tus necesidades */
+    margin: 0 auto; /* Centra el contenedor */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Opcional: Añade una sombra */
+    border-radius: 8px; /* Opcional: Añade bordes redondeados */
+    
+}
+
+.table_section {
+    height: calc(101.8vh - 150px); /* Ajusta la altura para que se ajuste dentro de la vista */
+    overflow: auto;
+    
+}
+
+table {
+    width: 100%;
+    table-layout: auto; /* Ajusta el layout de la tabla */
+    min-width: 900px;
+    border-collapse:collapse;
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f6f9fc;
+    color: #8493a5;
+    font-size: 15px;
+}
+
+td {
+    color: #2f4f4f;
+}
+
+th, td {
+    border-bottom: 1px solid #dddddd;
+    padding: 10px 20px;
+    text-align: center;
+    vertical-align: top; /* Alinea el texto en la parte superior de la celda */
+    white-space: normal; /* Permitir que el texto envuelva a varias líneas */
+}
+
+tr:hover td {
+    color: #0298cf;
+    cursor: pointer;
+    background-color: #f6f9fc;
+}
+
+td {
+    overflow-wrap: break-word; /* Permitir que el texto envuelva a varias líneas */
+    vertical-align: middle;
+}
+
+.editar-celda {
+    text-align: center; /* Centrar el contenido de la celda del botón de editar */
+    vertical-align: middle;
+}
+
+table .boton-editar {
+    display: inline-block; /* Cambiar de flex a inline-block para evitar que el botón sea demasiado ancho */
+    padding: 5px 10px; /* Ajustar el padding del botón */
+    margin: 0; /* Eliminar el margen del botón */
+}
+
+table .boton-editar i {
+    margin-right: 0; /* Eliminar el margen derecho del icono */
+}
+
+table .boton-editar + td {
+    width: 50px; /* Ajustar el ancho de la columna ID */
+    text-align: center; /* Centrar el texto de la columna ID */
+}
+
+/* Alternar los colores de las filas */
+tbody tr:nth-child(odd) {
+    background-color: #f9f9f9; /* Color para filas impares */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #ffffff; /* Color para filas pares */
+}
+
+@media (max-width: 900px) {
+    table {
+        min-width: 100%; /* Asegurarse de que la tabla sea responsiva */
+    }
+}
+
+.pagination {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+.pagination div, .pagination button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination .links {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.pagination button, .pagination a.link {
+    background-color: #f1f1f1;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.pagination button:hover, .pagination a.link:hover {
+    background-color: #ddd;
+}
+
+.pagination button[disabled], .pagination button[disabled]:hover {
+    background-color: #e9e9e9;
+    cursor: not-allowed;
+}
+
+.pagination a.link.active {
+    background-color: #007bff;
+    color: white;
+    cursor: default;
+}
+
+.pagination button i {
+    font-size: 18px;
+}
+
+
+
+/* detalles_recibo.php */
+.container {
+    width: 80%;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.container h1 {
+    text-align: center;
+    color: #343a40;
+}
+
+.detail-box {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.detail-column {
+    flex: 0 0 48%;
+    box-sizing: border-box;
+    background-color: #f1f3f5;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.detail-column p {
+    margin: 10px 0;
+    color: #495057;
+}
+
+.btn-1 {
+    margin-top: 5px;
+    padding: 5px 10px;
+    display: inline-block;
+    font-size: 14px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    background-color: #0298cf;
+    text-decoration: none;
+}
+
+.btn-1:hover {
+    background-color: #52c9f5;
+}
+
+
+/* Estilos básicos del modal */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro */
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Añadido para transición */
+    transition: opacity 0.3s ease-in-out; /* Transición para la opacidad */
+}
+
+/* Mostrar modal */
+.modal.show {
+    display: flex; /* Mostrar modal */
+    opacity: 1; /* Opacidad completa */
+}
+
+/* Estilo del contenido del Modal */
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 100%; /* Asegúrate de que no exceda el 100% del ancho de la pantalla */
+    box-sizing: border-box;
+    width: 100%; /* Por defecto ocupa el 100% del ancho disponible */
+    max-width: 900px; /* Ancho máximo del modal, ajusta este valor para hacerlo más ancho */
+    max-height: 90vh; /* Ajuste máximo del alto para el modal */
+    margin: 0 auto; /* Centra el modal horizontalmente */
+    overflow: auto; /* Permite que el contenido del modal haga scroll si es necesario */
+    transform: scale(0.7); /* Tamaño inicial para la animación */
+    transition: transform 0.3s ease-in-out; /* Transición para el tamaño */
+}
+
+/* Mostrar contenido del modal */
+.modal.show .modal-content {
+    transform: scale(1); /* Tamaño final */
+}
+
+/* Estilo del botón de cerrar del Modal */
+.modal-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Ajustar el tamaño del formulario */
+.container-detalles {
+    max-width: 100%; /* Asegura que el formulario ocupe el 100% del ancho del modal */
+    padding: 28px;
+    margin: 0;
+    box-shadow: none; /* Quita la sombra del formulario para evitar la superposición con la sombra del modal */
+}
+
+/* Estilos del título del formulario */
+h2 {
+    font-size: 26px;
+    font-weight: 600;
+    text-align: left;
+    color: #2f4f4f;
+    padding-bottom: 8px;
+    border-bottom: 1px solid silver;
+}
+
+/* Estilos del contenido del formulario */
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+/* Estilos de los campos del formulario */
+.input-box {
+    color: grey;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%; /* Ajuste del ancho para que se ajuste dentro del modal */
+    padding-bottom: 15px;
+}
+
+/* Ajustar contenido en el contenedor */
+.input-box:nth-child(2n) {
+    justify-content: end;
+}
+
+/* Estilo de las etiquetas y títulos de género */
+.input-box label, .gender-title {
+    width: 100%; /* Ajusta el ancho de las etiquetas para ocupar el 100% del contenedor */
+    color: #2f4f4f;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.gender-title {
+    font-size: 16px;
+}
+
+/* Estilo de los campos de entrada */
+.input-box input {
+    height: 40px;
+    width: 100%; /* Asegura que el campo de selección ocupe el 100% del contenedor */
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 14px;
+}
+
+/* Estilo de las áreas de texto */
+.input-box textarea {
+    height: 150px;
+    width: 100%; /* Asegura que el área de texto ocupe el 100% del contenedor */
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    resize: none; /* Bloquea la capacidad de redimensionar el textarea por el usuario */
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+/* Estilo de los campos en foco o válidos */
+.input-box input:is(:focus, :valid) {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo de las categorías de género */
+.gender-category {
+    color: grey;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%; /* Ajuste del ancho para que se ajuste dentro del modal */
+    padding-bottom: 15px;
+}
+
+/* Estilo de los campos de selección */
+.gender-category select {
+    height: 40px;
+    width: 100%; /* Asegura que el campo de selección ocupe el 100% del contenedor */
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 14px;
+}
+
+/* Ajustar contenido en el contenedor */
+.gender-category:nth-child(2n) {
+    justify-content: end;
+}
+
+/* Estilo de etiquetas y campos de género */
+.gender-category label, .gender-category input {
+    cursor: pointer;
+}
+
+/* Estilo del contenedor de botones */
+.button-container-1 {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Estilo del botón */
+.button-container-1 button, 
+.button-container-1 a {
+    margin-top: 5px;
+    padding: 10px 15px; /* Aumenta el padding para un tamaño uniforme */
+    display: inline-block;
+    font-size: 14px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-align: center; /* Asegura que el texto esté centrado */
+    box-sizing: border-box; /* Asegura que el padding y border se incluyan en el tamaño total */
+}
+
+/* Estilo del botón */
+.button-container-1 button {
+    background-color: #4CAF50;
+}
+
+/* Estilo del botón al pasar el ratón */
+.button-container-1 button:hover {
+    background-image: linear-gradient(to right, #39963c, #4CAF50);
+}
+
+/* Estilo del enlace de botón */
+.button-container-1 a {
+    background-color: #cf0202ed;
+    text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+/* Estilo del enlace al pasar el ratón */
+.button-container-1 a:hover {
+    background-image: linear-gradient(to right, #e90505, #cf0202ed);
+}
+
+/* Asegura que todos los botones y enlaces tengan el mismo tamaño */
+.button-container-1 button,
+.button-container-1 a {
+    min-width: 120px; /* Ajusta el valor según sea necesario */
+}
+
+/* Opcional: Alinea los botones para que todos tengan la misma altura */
+.button-container-1 button,
+.button-container-1 a {
+    height: 40px; /* Ajusta según tus necesidades */
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 600px) {
+    .modal-content {
+        margin: 0 10px; /* Ajusta el margen en pantallas pequeñas */
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .content {
+        max-height: 380px;
+        overflow: auto;
+    }
+
+    .input-box {
+        margin-bottom: 12px;
+        width: 100%;
+    }
+
+    .input-box:nth-child(2n) {
+        justify-content: space-between;
+    }
+
+    .gender-category {
+        display: flex;
+        justify-content: space-between;
+        width: 60%;
+    }
+}
+
+
+/* Iconos del Nuevo Proveedor */
+.input-box label, .gender-title {
+    display: flex;
+    align-items: center;
+}
+
+.input-box label i, .gender-title i {
+    margin-right: 8px; /* Espacio entre el ícono y el texto */
+    color: #2f4f4f; /* Color del ícono */
+}
+
+/* Tamaño del icono de estado */
+.icon-activo {
+    color: #45a049;
+    font-size: 24px; /* Ajusta el tamaño según tus necesidades */
+}
+
+.icon-inactivo {
+    color: red;
+    font-size: 24px; /* Ajusta el tamaño según tus necesidades */
+}
+
+
+
+/* Seccion de Ver.php diseño */
+.detalles-content {
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+    max-width: 600px; /* Ancho máximo */
+    margin: 20px auto; /* Centrando el contenedor */
+    font-family: "Poppins", sans-serif;
+    color: #333; /* Color del texto */
+}
+
+.detalles-content h2 {
+    font-size: 24px; /* Tamaño del título */
+    margin-bottom: 20px; /* Espaciado inferior del título */
+    color: #2f4f4f; /* Color del título */
+}
+
+.detalles-content p {
+    font-size: 16px; /* Tamaño del texto */
+    margin: 10px 0; /* Espaciado vertical */
+    line-height: 1.5; /* Altura de línea */
+}
+
+.detalles-content p strong {
+    color: #2f4f4f; /* Color de los títulos */
+}
+
+.detalles-content .botones {
+    margin-top: 20px; /* Espaciado superior */
+    text-align: right; /* Alineación a la derecha */
+}
+
+.detalles-content .botones a {
+    display: inline-block;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.boton-regresar {
+    background-color: #17a2b8; /* Color del botón de regresar */
+}
+
+.boton-regresar:hover {
+    background-color: #118da0; /* Color del botón de regresar al pasar el cursor */
+}
+
+/* Estilos para el toast */
+#toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.toast {
+    display: none;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.toast.show {
+    display: block;
+    opacity: 1;
+}
+
+.toast.hide {
+    opacity: 0;
+}
+
+.table th a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.table th a i {
+    display: none;
+    margin-left: 5px;
+    font-size: 0.8em;
+}
+
+.table th a i.active {
+    display: inline;
+}
+
+.table th a i.fa-arrow-up-a-z.active {
+    color: #007bff; /* Color para el ícono de orden ascendente activo */
+}
+
+.table th a i.fa-arrow-down-z-a.active {
+    color: #007bff; /* Color para el ícono de orden descendente activo */
+}
+
+.sort i {
+    margin-left: 5px;
+    font-size: 0.9em;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.sort.asc i {
+    color: #007bff;
+}
+
+.sort.desc i {
+    color: #007bff;
+}
+
+.sort i.fa-sort {
+    display: inline;
+}
+
+.sort.asc i.fa-sort-up {
+    display: inline;
+}
+
+.sort.desc i.fa-sort-down {
+    display: inline;
+}
+
